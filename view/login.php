@@ -44,7 +44,7 @@ require 'loginform.php';
                 <div class="col-md-6 mb-4  ">
 
                     <!--Card-->
-                    <div class="card">
+                    <div class="card text-center">
 
                         <!--Card content-->
                         <div class="card-body ">
