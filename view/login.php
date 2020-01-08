@@ -1,6 +1,8 @@
 <?php
 
 require 'loginform.php';
+require '\laragon\www\Ebookshop\model\model.php';
+
 
 
 ?>
@@ -48,7 +50,7 @@ require 'loginform.php';
 
                         <!--Card content-->
                         <div class="card-body ">
-                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                            <form action="model.php" method="post">
 
                                 <!--Grid row-->
                                 <div class="row ">
