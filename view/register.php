@@ -1,11 +1,16 @@
 <?php
 
-require 'registratieform.php';
+require '\laragon\www\Ebookshop\model\connection.php';
+require '\laragon\www\Ebookshop\control\control.php';
+
+if($_SERVER['REQUEST_METHOD'] == 'POST')datastore($_POST['Username'] , $_POST['email'] ,0 ,0 ,'' , $_POST['password']);
+
 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,6 +27,7 @@ require 'registratieform.php';
     <!-- Your custom styles (optional) -->
     <link href="css/style.min.css" rel="stylesheet">
 </head>
+
 
 <body class="grey lighten-3">
 
@@ -70,7 +76,7 @@ require 'registratieform.php';
                                 } else{
                                     echo"";
                                 }?>" class="form-control">
-                                    <span class="error"> <?php echo $emailerr;?></span>
+                                    <span class="error"> <?php echo ""?></span>
                                 </div>
 
                                 <!--password-->
