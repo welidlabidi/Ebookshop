@@ -1,11 +1,12 @@
 <?php
 
-require 'loginform.php';
-require '\laragon\www\Ebookshop\model\model.php';
+session_start();
 
-
+//require '\laragon\www\Ebookshop\model\model.php';
+ require 'loginform.php';
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,10 +27,71 @@ require '\laragon\www\Ebookshop\model\model.php';
     <link href="css/style.min.css" rel="stylesheet">
 </head>
 
-<body class="grey lighten-3">
+
+<body class="">
 
     <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+        <div class="container">
 
+            <!-- Brand -->
+            <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
+                <strong class="blue-text">MyBook</strong>
+            </a>
+            <a class="navbar-brand waves-effect" href="home.html"></a>
+            <img src="img/mybook logo.png" alt="">
+            </a>
+
+            <!-- Collapse -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Links -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <!-- Left -->
+                <ul class="navbar-nav mr-auto ml-3">
+                    <li class="nav-item active">
+                        <a class="nav-link waves-effect" href="#">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="product-page.html" target="_blank">Search for books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="checkout-page.html" target="_blank">Checkout</a>
+                    </li>
+                </ul>
+
+                <!-- Right -->
+                <ul class="navbar-nav nav-flex-icons">
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect">
+                            <span class="badge red z-depth-1 mr-1"> 1 </span>
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="login.html" class="nav-link" target="_blank">
+                            </i>Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="registration.html" class="nav-link border border-light rounded waves-effect"
+                            target="_blank">
+                            </i>Register
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+    </nav>
     <!-- Navbar -->
 
     <!--Main layout-->
@@ -46,11 +108,11 @@ require '\laragon\www\Ebookshop\model\model.php';
                 <div class="col-md-6 mb-4  ">
 
                     <!--Card-->
-                    <div class="card text-center">
+                    <div class="card">
 
                         <!--Card content-->
                         <div class="card-body ">
-                            <form action="model.php" method="post">
+                            <form action="" method="POST">
 
                                 <!--Grid row-->
                                 <div class="row ">
@@ -64,37 +126,36 @@ require '\laragon\www\Ebookshop\model\model.php';
                                 <!--email-->
                                 <div class="md-form">
                                     <input type="text" id="email" name="email" placeholder="youremail@example.com"
-                                        value="<?php if (isset($_SESSION["email"])){
-                                                            echo $_SESSION["email"];
-                                                        } else{
-                                                            echo"";
-                                                        }
-                                                ?>" class="form-control">
-                                    <span class="error"> <?php echo $emailerr;?></span>
+                                        class="form-control">
+                                    <span class="error">
+                                        <?php if(!empty($_SESSION["emailerr"])) {echo $_SESSION["emailerr"];}?></span>
+
                                 </div>
 
                                 <!--password-->
                                 <div class="md-form mt-3">
-                                    <input type="text" id="password" name="password" placeholder="Password" value="<?php
-                                        if (isset($_SESSION["password"])){
-                                                echo $_SESSION["password"];
-                                            } else {
-                                                echo "";
-                                            }
-                                        ?>" class="form-control">
-                                    <span class="error"> <?php echo $passworderr;?></span>
+                                    <input type="text" id="password" name="password" placeholder="Password"
+                                        class="form-control">
+                                    <span class="error">
+                                        <?php if( !empty($_SESSION["passworderr"])) {echo $_SESSION["passworderr"];}?></span>
+                                </div><br>
+                                <div class="forgot">
+                                    <a href="#">forgot password</a>
                                 </div>
-
                                 <div class="form-check pl-0 mt-4 ml-4 mb-2">
                                     <input class="form-check-input" type="checkbox" value="" id="invalidCheck266"
                                         required>
-                                    <label class="form-check-label" for="invalidCheck266">Agree to terms and
-                                        conditions</label>
-                                    <div class="invalid-feedback">You shall not pass!</div>
-                                </div>
+                                    <div class="terms">
+                                        <label class="form-check-label" for="invalidCheck266" id="terms">Agree to <a
+                                                href="terms.html">
+                                                terms
+                                                and
+                                                conditions</label>
+                                    </div>
 
 
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">login</button>
+                                    <button class=" btn btn-primary btn-lg btn-block" value="submit" type="submit"
+                                        name="submit" id="submit">login</button>
 
                             </form>
                         </div>
@@ -114,8 +175,6 @@ require '\laragon\www\Ebookshop\model\model.php';
     <!--Footer-->
     <footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
-
-
         <hr class="my-4">
 
         <!-- Social icons -->
@@ -124,39 +183,19 @@ require '\laragon\www\Ebookshop\model\model.php';
                 <i class="fab fa-facebook-f mr-3"></i>
             </a>
 
-            <a href="https://twitter.com/MDBootstrap" target="_blank">
-                <i class="fab fa-twitter mr-3"></i>
-            </a>
-
             <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
                 <i class="fab fa-youtube mr-3"></i>
             </a>
 
-            <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
-                <i class="fab fa-google-plus-g mr-3"></i>
-            </a>
-
-            <a href="https://dribbble.com/mdbootstrap" target="_blank">
-                <i class="fab fa-dribbble mr-3"></i>
-            </a>
-
-            <a href="https://pinterest.com/mdbootstrap" target="_blank">
-                <i class="fab fa-pinterest mr-3"></i>
-            </a>
-
             <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
                 <i class="fab fa-github mr-3"></i>
-            </a>
-
-            <a href="http://codepen.io/mdbootstrap/" target="_blank">
-                <i class="fab fa-codepen mr-3"></i>
             </a>
         </div>
         <!-- Social icons -->
 
         <!--Copyright-->
         <div class="footer-copyright py-3">
-            © 2019 Copyright:
+            © 2020 Copyright Becode Team
         </div>
         <!--/.Copyright-->
 
@@ -173,8 +212,10 @@ require '\laragon\www\Ebookshop\model\model.php';
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
     <!-- Initializations -->
+    <script type="text/javascript" src="js/app.js">
+    </script>
     <script type="text/javascript">
-    // Animations initialization
+    //Animations initialization
     new WOW().init();
     </script>
 </body>
