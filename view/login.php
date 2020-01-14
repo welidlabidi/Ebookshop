@@ -29,7 +29,7 @@ require 'loginform.php';
 </head>
 
 
-<body class="grey lighten-3" id="body" style="overflow:hidden;">
+<body class="grey lighten-3">
     <!-- header -->
     <?php
   include 'header.php';
@@ -92,7 +92,6 @@ require 'loginform.php';
                                         <label class="form-check-label" for="invalidCheck266" id="terms">Agree to
                                             <a href="terms.html">terms and conditions</a>
                                         </label>
-
                                     </div>
                                 </div>
 
