@@ -1,3 +1,19 @@
+<?php
+ini_set('display_errors', true);
+error_reporting(E_ALL);
+
+include `/var/www/Ebookshop/model/connection.php`;
+
+$db = openConnection();
+$select = 'SELECT photo FROM product';
+$data=$db->query($select);
+foreach ($data as $row){
+    var_dump($row);
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,11 +21,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Material Design Bootstrap</title>
+    <title>MyBook</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <!-- Bootstrap core CSS -->
-    <link href="items.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
@@ -27,16 +43,16 @@
 
             <!--Grid row-->
             <div class="row wow fadeIn">
+                <?php foreach ($data as $row): ?>
 
                 <!--Grid column-->
                 <div class="col-md-6 mb-4">
 
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/14.jpg"
-                        class="img-fluid" alt="">
+                    <img src="<?php echo $row['photo'];?>" class="img-fluid" alt="">
 
                 </div>
                 <!--Grid column-->
-
+                <?php  endforeach; ?>
                 <!--Grid column-->
                 <div class="col-md-6 mb-4">
 
@@ -79,6 +95,8 @@
 
                         </form>
 
+
+
                     </div>
                     <!--Content-->
 
@@ -87,13 +105,6 @@
 
             </div>
             <!--Grid row-->
-
-
-
-
-
-
-
     </main>
     <!--Main layout-->
     <!--Footer-->
@@ -141,5 +152,6 @@
     new WOW().init();
     </script>
 </body>
+
 
 </html>

@@ -1,8 +1,8 @@
 <?php
 
 require 'loginform.php';
-// require '\laragon\www\Ebookshop\control\control.php';
-// require '\laragon\www\Ebookshop\model\connection.php';
+// require '\Ebookshop\control\control.php';
+// require '\Ebookshop\model\connection.php';
 
 //if($_SERVER['REQUEST_METHOD'] == 'POST')datastore(0, $_POST['email'] ,0 ,0 ,'' , $_POST['password']);
 

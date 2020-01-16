@@ -1,12 +1,11 @@
 <?php
 session_start();
 require 'registratieform.php';
-//require '\laragon\www\Ebookshop\model\connection.php';
-//require '\laragon\www\Ebookshop\control\control.php';
+//require '\Ebookshop\model\connection.php';
+//require '\Ebookshop\control\control.php';
 
-// require '\laragon\www\Ebookshop\model\connection.php';
-// require '\laragon\www\Ebookshop\control\control.php';
-if($_SERVER['REQUEST_METHOD'] == 'POST')datastore($_POST['Username'] , $_POST['email'] ,0 ,0 ,'' , $_POST['password']);
+
+//if($_SERVER['REQUEST_METHOD'] == 'POST')datastore($_POST['Username'] , $_POST['email'] ,0 ,0 ,'' , $_POST['password']);
 
 
 ?>

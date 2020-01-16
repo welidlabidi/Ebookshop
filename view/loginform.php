@@ -1,4 +1,5 @@
 <?php
+require '../model/connectionDB.php';
 session_start();
 
 $email = $password = "";
@@ -38,6 +39,13 @@ if(empty($_SESSION["emailerr"]) && empty($_SESSION["passworderr"] ) && isset($_P
     header('location: products.php');
 
 }
+
+if(isset($_POST['email'])){
+    
+}
+
+
+
 
 
 ?>
